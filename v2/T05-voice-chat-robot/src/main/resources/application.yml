@@ -1,0 +1,21 @@
+spring:
+  thymeleaf:
+    cache: false
+  ai:
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      audio:
+        transcription:
+          transcription-path: /audio/transcriptions
+          options:
+            model: ${MODEL_TRANSCRIPTION_NAME:whisper-1}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug

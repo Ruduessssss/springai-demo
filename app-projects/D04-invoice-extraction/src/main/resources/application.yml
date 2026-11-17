@@ -1,0 +1,19 @@
+spring:
+  ai:
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+          temperature: 0.1 # 低温度，保证提取的稳定性
+  thymeleaf:
+    cache: false
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
+server:
+  port: 8081

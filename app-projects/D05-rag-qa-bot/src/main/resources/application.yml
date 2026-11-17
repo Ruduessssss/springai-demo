@@ -1,0 +1,28 @@
+spring:
+  ai:
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+          temperature: 0.1 # 低温度，保证提取的稳定性
+      embedding:
+        embeddings-path: /embeddings
+        options:
+          model: ${MODEL_EMBEDDING_NAME:text-embedding-3-small}
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
+    org.springframework.ai.chat.client: DEBUG
+server:
+  port: 8080

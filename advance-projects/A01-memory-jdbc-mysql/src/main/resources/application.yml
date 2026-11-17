@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai-oc-my?useUnicode=true&allowPublicKeyRetrieval=true&autoReconnect=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password:
+  ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            # 自动创建表，表对应的schema在 spring-ai-starter-model-chat-memory-repository-jdbc 包下的 schema-mysql.sql 文件中
+            initialize-schema: always
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug

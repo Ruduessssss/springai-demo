@@ -1,0 +1,20 @@
+spring:
+  thymeleaf:
+    cache: false
+  ai:
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
+    com.git.hui.springai.app.react.simple.SimpleReActAgent: info
+    com.git.hui.springai.app.advisor.MyLoggingAdvisor: info
+    com.git.hui.springai.app.react.simple.CalculatorTools: debug
+    com.git.hui.springai.app.react.stream.StreamReActAgent: info

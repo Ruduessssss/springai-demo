@@ -1,0 +1,19 @@
+spring:
+  ai:
+    openai:
+      base-url: ${MODEL_BASE_URL}
+      api-key: ${MODEL_API_KEY}
+      chat:
+        completions-path: /chat/completions
+        options:
+          model: ${MODEL_NAME}
+  data:
+    redis: # redis 配置
+      host: localhost
+      port: 6379
+      password:
+
+# 修改日志级别
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
